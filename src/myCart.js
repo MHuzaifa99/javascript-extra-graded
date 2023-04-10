@@ -1,8 +1,12 @@
 var cartItem = [];
+
 exports.myCart = () => {
     return cartItem
 }
 
+exports.emptyCart = () =>{
+    cartItem = []
+}
 exports.addItemInCart = (obj) => {
     obj.totalPrice = obj.quantity * obj.price
     cartItem.push(obj)

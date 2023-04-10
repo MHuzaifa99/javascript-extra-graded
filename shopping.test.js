@@ -1,4 +1,4 @@
-const { myCart, addItemInCart, totalPrice, quantityUpdate } = require('./src/myCart')
+let { myCart, addItemInCart, totalPrice, quantityUpdate, emptyCart } = require('./src/myCart')
 
 test('Cart should be empty', () => {
     // Arrang
@@ -44,11 +44,25 @@ test('already added item`s quantity change', () => {
     expect(result).toEqual(assert)
 })
 
-test("List of itemized of cart", () =>{
+test("List of itemized of cart", () => {
     // Arrang
-    const assert = []
+    emptyCart()
+    const obj = {
+        name: "handbags",
+        quantity: 4,
+        price: 500,
+    }
+    addItemInCart(obj)
+
+    const assert = new Array(
+        {
+            name: "handbags",
+            price: 500,
+            quantity: 4,
+            totalPrice: 2000,
+        })
     // Act
     const result = myCart()
     // Assert
-    expect(result).toBe(assert)
+    expect(result).toEqual(assert)
 })
