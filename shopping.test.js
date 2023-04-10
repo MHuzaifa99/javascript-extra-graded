@@ -48,6 +48,7 @@ test("List of itemized of cart", () => {
     // Arrang
     emptyCart()
     const obj = {
+        id: 1,
         name: "handbags",
         quantity: 4,
         price: 500,
@@ -56,6 +57,7 @@ test("List of itemized of cart", () => {
 
     const assert = new Array(
         {
+            id: 1,
             name: "handbags",
             price: 500,
             quantity: 4,
@@ -65,4 +67,39 @@ test("List of itemized of cart", () => {
     const result = myCart()
     // Assert
     expect(result).toEqual(assert)
+})
+
+test('remove item from cart', () =>{
+    // Arrange
+    emptyCart()
+    const arrObj =[
+        {
+            id: 1,
+            name: "handbags",
+            quantity: 1,
+            price: 500,
+        },{
+            id: 2,
+            name: "watch",
+            quantity: 2,
+            price: 500,
+        }
+    ]
+    for(let i of arrObj){
+        addItemInCart(i)
+    }
+    const id = 1
+    const assert = [{
+        id: 2,
+        name: "watch",
+        quantity: 2,
+        price: 500,
+        totalPrice: 1000
+    }]
+    // Act
+    removeItem(id)
+    const result = myCart()
+    // Assert
+    expect(result).toEqual(assert)
+
 })
